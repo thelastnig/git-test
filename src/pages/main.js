@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+let gapi = window.gapi
 
 class Main extends Component {
 
 	componentDidMount () {
-		window.gapi.load("client:auth2", () => {
-			window.gapi.auth2.init({
+		gapi.load("client:auth2", () => {
+			gapi.auth2.init({
 				client_id: "581322304512-flfucl3tgfqrffnoja2g4768peqsk0be.apps.googleusercontent.com",
 				Scope: "https://www.googleapis.com/auth/photoslibrary https://www.googleapis.com/auth/photoslibrary.readonly https://www.googleapis.com/auth/photoslibrary.readonly.appcreateddata ",
 			});
@@ -16,7 +17,7 @@ class Main extends Component {
 
 	googleBtnClick = () => {
 		console.log("버튼 클릭");
-		window.gapi.auth2.getAuthInstance()
+		gapi.auth2.getAuthInstance()
 		.signIn({
 			approval_prompt: 'force', // 비밀번호 입력창 (동작안함)
 			max_auth_age: 0,
